@@ -1,0 +1,53 @@
+﻿@page
+@model MyApp.Namespace.LoginModel
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "BetterMe login";
+}
+
+<div class="row vh-100 betterme-bg">
+    <div class="col-1 col-md-4">
+
+    </div>
+    <div class="col-10 col-md-4 align-self-center bg-white rounded p-3 shadow-lg">
+        <div class="row justify-content-center p-3">
+            <div class="col-10">
+                <img src="/Images/BetterMe-logo.png" class="img-fluid" alt="BetterMe logo">
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col text-center fs-2 fw-bold">
+                <p class="h2">Iniciar sesión</p>
+            </div>
+        </div>
+        <div class="row justify-content-center p-3">
+            <div class="col">
+                <label for="emailInput" class="form-label">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="txtUsername" placeholder="pepito123...">
+            </div>
+        </div>
+        <div class="row justify-content-center p-3">
+            <div class="col">
+                <label for="passwordInput" class="form-label">Contraseña</label>
+                <input type="password" id="pwdPassword" class="form-control">
+            </div>
+        </div>
+        <div class="row text-center justify-content-center p-3">
+            <div class="col">
+                <button type="button" class="btn btn-primary" onclick="loginUser()">Iniciar sesión</button>
+            </div>
+        </div>
+        <div class="row text-center justify-content-center ">
+            <div clase="col">
+                <button type="button" class="btn btn-link" onclick="window.location.href='/NewAccount'">Crear cuenta</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-1 col-md-4">
+        
+    </div>
+</div>
+
+@section Scripts {
+  <script src="~/js/login.js"></script>
+}

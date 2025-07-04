@@ -1,0 +1,49 @@
+﻿@page  "{Id?}"
+@model MyApp.Namespace.ReportDetailsModel
+@{
+  ViewData["Title"] = "Detalle de Reporte";
+}
+
+<h1 class="text-2xl font-bold mb-4">Reporte #@Model.Report!.Id</h1>
+
+@if (Model.Message != null)
+{
+  <div class="p-2 mb-4 bg-green-100 text-green-800 rounded">
+    @Model.Message
+  </div>
+}
+<div class="mb-4">
+  <a asp-page="/PendingReports"
+     class="inline-block px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-gray-800">
+    ← Volver a reportes pendientes
+  </a>
+</div>
+
+<div class="border p-4 rounded shadow mb-6">
+  <h2 class="font-semibold">Información del Reporte</h2>
+  <p><b>Reportado por:</b> @Model.Report.ReporterUsername</p>
+  <p><b>Usuario reportado:</b> @Model.Report.ReportedUsername</p>
+  <p><b>Razón:</b> @Model.Report.Reason</p>
+  <p class="text-sm text-gray-600">@Model.Report.ReportDate.ToLocalTime()</p>
+</div>
+
+<div class="border p-4 rounded shadow mb-6">
+  <h2 class="font-semibold">Datos de la Publicación</h2>
+  <h3 class="text-xl">@Model.Post!.Title</h3>
+  <div class="w-full aspect-video overflow-hidden rounded mb-3 bg-gray-100">
+    <img src="@Model.ImageUrl" class="w-full h-full object-contain" />
+  </div>
+  <p>@Model.Post.Description</p>
+  <p class="text-sm text-gray-500">@Model.Post.Category</p>
+</div>
+
+<form method="post" asp-page-handler="Evaluate" class="space-x-2">
+  <button name="action" value="delete"
+          class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+    Eliminar publicación
+  </button>
+  <button name="action" value="keep"
+          class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+    Rechazar reporte
+  </button>
+</form>

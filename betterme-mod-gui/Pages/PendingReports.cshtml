@@ -1,0 +1,48 @@
+﻿@page
+@model MyApp.Namespace.PendingReportsModel
+@{
+    ViewData["Title"] = "Reportes Pendientes";
+}
+<script src="https://cdn.tailwindcss.com"></script>
+
+<h1 class="text-2xl font-bold mb-6">Reportes Pendientes</h1>
+
+@if (!Model.Reports.Any())
+{
+    <p class="text-gray-600">No hay reportes pendientes.</p>
+}
+else
+{
+    <div class="space-y-4">
+    @foreach (var rpt in Model.Reports)
+    {
+        <div class="bg-white p-4 rounded-lg shadow flex flex-col md:flex-row md:justify-between">
+            <div>
+                <p>
+                  <span class="font-semibold">Reportado por:</span>
+                  @rpt.ReporterUsername
+                </p>
+                <p>
+                  <span class="font-semibold">Objeto del reporte:</span>
+                  @rpt.ReportedUsername
+                </p>
+                <p>
+                  <span class="font-semibold">Razón:</span>
+                  @rpt.Reason
+                </p>
+                <p class="text-sm text-gray-500">
+                  Fecha: @rpt.ReportDate.ToString("g")
+                </p>
+            </div>
+            <div class="mt-4 md:mt-0 flex space-x-2">
+                <a asp-page="/ReportDetails"
+                   asp-route-id="@rpt.Id"
+                   class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                  Ver detalle
+                </a>
+            </div>
+        </div>
+    }
+    </div>
+}
+

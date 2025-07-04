@@ -1,0 +1,3 @@
+obj\Debug\net8.0\protos/Multimedia.cs \
+obj\Debug\net8.0\protos/MultimediaGrpc.cs: C:/Users/cuau_/.nuget/packages/grpc.tools/2.71.0/build/native/include/google/protobuf/timestamp.proto\
+ protos/multimedia.proto
